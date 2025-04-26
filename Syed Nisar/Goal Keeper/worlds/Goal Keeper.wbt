@@ -1,0 +1,169 @@
+#VRML_SIM R2025a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/robotstadium/protos/RobotstadiumSoccerField.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/balls/protos/FifaSoccerBall.proto"
+
+WorldInfo {
+}
+Viewpoint {
+  orientation -0.5773502691896258 0.5773502691896258 0.5773502691896258 2.0944
+  position 3.240001603492283 1.5599130818767757e-06 3.595395993577193
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+Robot {
+  translation 3.8855703298076643 0.2995144463397212 -0.0002271453454422423
+  rotation -0.013992296382824688 0.1705797274346717 -0.985244524080316 -0.16646475346664413
+  children [
+    Pose {
+      translation 0 0 0.0415
+      rotation 0 0 1 -1.570796
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 0.333333 0
+            roughness 1
+            metalness 0
+          }
+          geometry DEF BODY Cylinder {
+            height 0.08
+            radius 0.045
+          }
+        }
+      ]
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position -25.146268261868396
+        axis 0 1 0
+        anchor 0 0 0.025
+      }
+      device [
+        RotationalMotor {
+          name "left wheel motor"
+          consumptionFactor 70
+        }
+        PositionSensor {
+          name "left wheel sensor"
+        }
+      ]
+      endPoint Solid {
+        translation 0 0.04499999999999917 0.025
+        rotation 0.1409949916696532 -0.14099499343044933 -0.9799187844671732 1.5910802537991315
+        children [
+          DEF WHEEL Pose {
+            rotation 0.577656895078166 0.5771968951617173 -0.5771968951617173 -2.093935
+            children [
+              Shape {
+                appearance PBRAppearance {
+                  baseColor 0 0 0
+                  roughness 1
+                  metalness 0
+                }
+                geometry Cylinder {
+                  height 0.01
+                  radius 0.025
+                }
+              }
+            ]
+          }
+        ]
+        name "left wheel"
+        boundingObject USE WHEEL
+        physics DEF PHYSICS_WHEEL Physics {
+          density -1
+          mass 0.05
+        }
+        linearVelocity -0.14798682620201023 -0.024491728088663144 -2.3250546198839566e-06
+        angularVelocity 0.9796682631897381 -5.919487223828732 -3.838485826408752e-05
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position -0.2558774434808415
+        axis 0 1 0
+        anchor 0 0 0.025
+      }
+      device [
+        RotationalMotor {
+          name "right wheel motor"
+          consumptionFactor 70
+        }
+        PositionSensor {
+          name "right wheel sensor"
+        }
+      ]
+      endPoint Solid {
+        translation 0 -0.04499999999999915 0.025
+        rotation 0.06523351704385504 -0.06523350572392018 -0.9957354959953253 1.5750700250945318
+        children [
+          USE WHEEL
+        ]
+        name "right wheel"
+        boundingObject USE WHEEL
+        physics USE PHYSICS_WHEEL
+        linearVelocity -0.1479872793459585 -0.02449139916251224 2.431390344043585e-06
+        angularVelocity 0.9796672220861318 -5.919487416020468 -3.726608276089485e-05
+      }
+    }
+    Camera {
+      translation 0 0.04 0.0915
+      rotation 0 0 1 1.5707996938995747
+      children [
+        Pose {
+          translation -0.015 0 0
+          rotation -0.5771968951617173 -0.577656895078166 -0.5771968951617173 -2.093935
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 1 0 0
+                roughness 1
+                metalness 0
+              }
+              geometry Cylinder {
+                height 0.03
+                radius 0.01
+              }
+            }
+          ]
+        }
+      ]
+      fieldOfView 1.0472
+      width 256
+      height 128
+      antiAliasing TRUE
+      recognition Recognition {
+        frameColor 0 1 0
+        frameThickness 3
+      }
+    }
+  ]
+  name "My Bot"
+  boundingObject Pose {
+    translation 0 0 0.0415
+    rotation 0 0 1 -1.570796
+    children [
+      USE BODY
+    ]
+  }
+  physics Physics {
+    density -1
+    mass 0.5
+  }
+  controller "my_controller"
+  linearVelocity -0.14798731302374968 -0.0244906599686144 5.1381421176044344e-08
+  angularVelocity -5.293398405115536e-05 -1.544268292057493e-05 -6.630041304313554e-05
+}
+RobotstadiumSoccerField {
+}
+FifaSoccerBall {
+  hidden linearVelocity_0 -0.17657840895116356 0.36202831298101557 2.0057957676213829e-16
+  hidden angularVelocity_0 -5.171833042585936 -2.5225486993023365 0.7408467486997934
+  translation 3.249057813334149 2.745289843234912 0.06967823199999998
+  rotation 0.3772064604300853 0.7750302970167 -0.5069944032393375 -1.6905870473048505
+  size 1
+}
